@@ -6,7 +6,7 @@ const filename = 'ethjs-util';      // eslint-disable-line
 const library = 'ethUtil';          // eslint-disable-line
 const config = {                    // eslint-disable-line
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         loaders: ['babel-loader'],
@@ -17,6 +17,10 @@ const config = {                    // eslint-disable-line
         loader: 'json',
       },
     ],
+  },
+  mode: env,
+  optimization: {
+    minimize: true,
   },
   devtool: 'cheap-module-source-map',
   output: {
@@ -37,22 +41,6 @@ const config = {                    // eslint-disable-line
 
 if (env === 'production') {
   config.output.filename = filename + '.min.js'; // eslint-disable-line
-  config.plugins
-    .push(new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        warnings: false,
-        screw_ie8: false,
-      },
-      mangle: {
-        screw_ie8: false,
-      },
-      output: {
-        screw_ie8: false,
-      },
-    }));
 }
 
 module.exports = config;
