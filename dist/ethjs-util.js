@@ -1920,9 +1920,9 @@ module.exports = function stripHexPrefix(str) {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(Buffer) {
 
-const isHexPrefixed = __webpack_require__(0);
+var isHexPrefixed = __webpack_require__(0);
 
-const stripHexPrefix = __webpack_require__(2);
+var stripHexPrefix = __webpack_require__(2);
 /**
  * Pads a `String` to have an even length
  * @param {String} value
@@ -1963,7 +1963,7 @@ function intToHex(i) {
 
 
 function intToBuffer(i) {
-  const hex = intToHex(i);
+  var hex = intToHex(i);
   return Buffer.from(padToEven(hex.slice(2)), 'hex');
 }
 /**
@@ -2014,7 +2014,7 @@ function arrayContainsArray(superset, subset, some) {
 
 
 function toUtf8(hex) {
-  const bufferValue = Buffer.from(padToEven(stripHexPrefix(hex).replace(/^0+|0+$/g, '')), 'hex');
+  var bufferValue = Buffer.from(padToEven(stripHexPrefix(hex).replace(/^0+|0+$/g, '')), 'hex');
   return bufferValue.toString('utf8');
 }
 /**
@@ -2037,7 +2037,7 @@ function toAscii(hex) {
   }
 
   for (; i < l; i += 2) {
-    const code = parseInt(hex.substr(i, 2), 16);
+    var code = parseInt(hex.substr(i, 2), 16);
     str += String.fromCharCode(code);
   }
 
@@ -2054,7 +2054,7 @@ function toAscii(hex) {
 
 
 function fromUtf8(stringValue) {
-  const str = Buffer.from(stringValue, 'utf8');
+  var str = Buffer.from(stringValue, 'utf8');
   return "0x" + padToEven(str.toString('hex')).replace(/^0+|0+$/g, '');
 }
 /**
@@ -2072,8 +2072,8 @@ function fromAscii(stringValue) {
 
   for (var i = 0; i < stringValue.length; i++) {
     // eslint-disable-line
-    const code = stringValue.charCodeAt(i);
-    const n = code.toString(16);
+    var code = stringValue.charCodeAt(i);
+    var n = code.toString(16);
     hex += n.length < 2 ? "0" + n : n;
   }
 
