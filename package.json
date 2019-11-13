@@ -233,7 +233,7 @@
     "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack --config ./internals/webpack/webpack.config.js ./lib/index.js --progress",
     "coveralls": "npm run test-travis && cat ./coverage/lcov.info | coveralls",
     "lint": "npm run lint:js",
-    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern **/**.min.js",
+    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern dist/**.min.js",
     "lint:js": "npm run lint:eslint -- . ",
     "lint:staged": "lint-staged",
     "prebuild": "npm run build:clean && npm run test",
