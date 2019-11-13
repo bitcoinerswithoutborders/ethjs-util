@@ -20,7 +20,7 @@ const config = {                    // eslint-disable-line
   },
   mode: env,
   optimization: {
-    minimize: true,
+    minimize: env === 'production',
   },
   devtool: 'cheap-module-source-map',
   output: {
