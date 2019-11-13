@@ -68,7 +68,7 @@ function arrayContainsArray(superset, subset, some) {
   if (Array.isArray(superset) !== true) { throw new Error(`[ethjs-util] method arrayContainsArray requires input 'superset' to be an array got type '${typeof superset}'`); }
   if (Array.isArray(subset) !== true) { throw new Error(`[ethjs-util] method arrayContainsArray requires input 'subset' to be an array got type '${typeof subset}'`); }
 
-  return subset[Boolean(some) && 'some' || 'every']((value) => (superset.indexOf(value) >= 0));
+  return subset[some ? 'some' : 'every']((value) => (superset.indexOf(value) >= 0));
 }
 
 /**
@@ -159,7 +159,7 @@ function getKeys(params, key, allowEmpty) {
     var value = params[i][key]; // eslint-disable-line
     if (allowEmpty && !value) {
       value = '';
-    } else if (typeof(value) !== 'string') {
+    } else if (typeof (value) !== 'string') {
       throw new Error('invalid abi');
     }
     result.push(value);
@@ -177,7 +177,7 @@ function getKeys(params, key, allowEmpty) {
  * @returns {Boolean} output the string is a hex string
  */
 function isHexString(value, length) {
-  if (typeof(value) !== 'string' || !value.match(/^0x[0-9A-Fa-f]*$/)) {
+  if (typeof (value) !== 'string' || !value.match(/^0x[0-9A-Fa-f]*$/)) {
     return false;
   }
 
